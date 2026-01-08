@@ -11,19 +11,17 @@ Route::get('/jobs', function () {
     return 'Available Jobs';
 })->name('jobs');
 
-//post volt eslőneka patch helyet, vagy lehet any is a match és az első paraméternek a ([get, put]) helyet
-Route::any('/submit', function(){
-    return 'submit';
+Route::get('/posts/{id}', function(string $id){
+    return 'Post '. $id;
+    //'[0-9]+', '[a-zA-Z]+'
+    //whereAlpha
+});//->whereNumber('id');
+
+Route::get('/users/{id}', function(string $id){
+    return 'User '. $id;
+
 });
 
-Route::get('/test', function(){
-    $url = route('jobs');
-    return "<a href='$url'>Click Here </a>";
-});
-
-Route::get('/api/users', function(){
-    return [
-        'name' => 'John Doe',
-        'email' => 'john@gmail.com'
-    ];
+Route::get('/posts/{id}/comments/{commentid}', function(string $id, string $commentid){
+    return 'Post '. $id.'Comment '. $commentid ;
 });
